@@ -13,10 +13,10 @@ const mouthWidth = 20;
 const mouthRadius = 130;
 
 const mouthArc: Function = arc()
-.innerRadius(mouthRadius)
-.outerRadius(mouthRadius + mouthWidth)
-.startAngle(Math.PI / 2)
-.endAngle(Math.PI * 3/2);
+  .innerRadius(mouthRadius)
+  .outerRadius(mouthRadius + mouthWidth)
+  .startAngle(Math.PI / 2)
+  .endAngle(Math.PI * 3/2);
 
 const BackgroundCircle = () => (
   <circle 
@@ -41,8 +41,8 @@ const RightEye = () => (
     cy={-eyeOffSetY} 
     r={eyeRadius}
   />
-)   
-      
+)
+
 const App: React.FC = () => {
         
   return (
