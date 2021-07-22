@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { csvParse, DSVRowArray } from 'd3'
+import fetchText from '../../../utils/fetchText';
 
-const width = 960;
-const height = 500;
-const circleRadius = 30; 
-const inicialMousePosition = { x: width / 2, y: height / 2 }
-
+const csvUrl = 'https://gist.githubusercontent.com/bboa3/ffb5ad6d1d87037a665839e85eb2c865/raw/80658e63e7302d42bc61dab71a6fe9e30cdcd5de/name-css-colors.csv'
 
 const CssColors: React.FC = () => {
-  const [mousePosition, setMousePosition ] = useState(inicialMousePosition);
+  const [data, setData ] = useState<DSVRowArray<string> | null>(null);
 
-  const handleMouseMove = (e: any) => {
-    const { clientX, clientY } = e;
-    setMousePosition({x: clientX, y: clientY})
-  }
+  useEffect(() => {
+    fetchText(csvUrl).then(text => {
+      setData(csvParse(text));
+    })
+  }, [])
+
+
+  if(!data) return <pre>Loading...</pre>
+
+  console.log(data)
   
-
   return (
-     <svg width={width} height={height} onMouseMove={handleMouseMove}>
-      <circle 
-        cx={mousePosition.x}
-        cy={mousePosition.y}
-        r={circleRadius}
-      />
-    </svg>
+     <div>
+      {
+        data.map(d => {
+          return (
+            <div style={{backgroundColor: d['RGB hex value'], width: 40, height: 40}}>
+              
+            </div>
+          )
+        })
+      }
+     </div>
   )
 }
 
