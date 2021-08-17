@@ -1,0 +1,23 @@
+{
+    "cSpell.language": "en,pt",
+    "cSpell.enableFiletypes": [
+        "!c",
+        "!csharp",
+        "!go",
+        "!graphql",
+        "!jade",
+        "!java",
+        "!latex",
+        "!php",
+        "!pug",
+        "!python",
+        "!restructuredtext",
+        "!rust",
+        "!scala",
+        "!scss",
+        "dockerfile",
+        "ignore",
+        "jsx-tags",
+        "xml"
+    ]
+}
