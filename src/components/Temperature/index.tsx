@@ -32,6 +32,7 @@ const BarCharts: React.FC = () => {
   const yScale = scaleLinear()
     .domain(extent(data, yValue) as Iterable<NumberValue>)
     .range([innerHeight, 0])
+    .nice()
 
   const xScale = scaleTime()
     .domain(extent(data, xValue) as Iterable<NumberValue>)
@@ -74,7 +75,7 @@ const BarCharts: React.FC = () => {
           xValue={xValue}
           yValue={yValue}
           tooltipFormat={xAxisTickFormat}
-          circleRadios={7}
+          circleRadios={4}
         />
       </g>
     </svg>

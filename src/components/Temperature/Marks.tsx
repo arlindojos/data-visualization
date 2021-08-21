@@ -1,4 +1,4 @@
-import { DSVParsedArray, ScaleTime } from "d3";
+import { DSVParsedArray, ScaleTime, line, curveNatural } from "d3";
 import { D } from "./useData";
 
 interface Props {
@@ -20,19 +20,26 @@ export const Marks: React.FC<Props> = ({
   tooltipFormat,
   circleRadios
 }) => (
-  <>
+  <g className="marks">
+    <path 
+      d={
+        line()
+          .curve(curveNatural)
+          .x(d => xScale(xValue(d)))
+          .y(d => yScale(yValue(d)))(data as unknown as [number, number][])!
+        } 
+    />
     {
       data.map(d => (
         <circle
-          className="mark"
           key={yValue(d)}
           cx={xScale(xValue(d))}
           cy={yScale(yValue(d))}
           r={circleRadios}
         >
-          <title>{tooltipFormat(xValue(d))}</title>
+          <title>{yValue(d).toFixed(2)}</title>
         </circle>
       ))
     }
-  </>
+  </g>
 )
