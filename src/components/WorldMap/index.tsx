@@ -1,5 +1,4 @@
-import {  } from 'd3';
-import { D, useData } from './useData';
+import { useData } from './useData';
 import { Marks } from './Marks';
 import './styles.css';
 
